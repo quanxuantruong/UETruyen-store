@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import Button from "@/components/ui/button";
@@ -13,6 +13,7 @@ const Summary = () => {
     const searchParams = useSearchParams();
     const items = useCart((state) => state.items);
     const removeAll = useCart((state) => state.removeAll);
+
 
     useEffect(() => {
         if (searchParams.get('success')) {
@@ -26,12 +27,13 @@ const Summary = () => {
     }, [searchParams, removeAll]);
 
     const totalPrice = items.reduce((total, item) => {
-        return total + Number(item.price)
+        return total + Number(item.price) * Number(item.orderQuantity)
     }, 0);
 
     const onCheckout = async () => {
+
         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-            productIds: items.map((item) => item.id)
+            cartItems: items.map((item) => item)
         });
 
         window.location = response.data.url;

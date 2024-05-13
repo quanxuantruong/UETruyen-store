@@ -4,12 +4,12 @@ import { X } from "lucide-react";
 
 import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
-import useCart from "@/hooks/use-cart";
+import useCart, { CartOrder } from "@/hooks/use-cart";
 import { Product } from "@/types";
 
 
 interface CartItemProps {
-    data: Product;
+    data: CartOrder;
 }
 
 const CartItem: React.FC<CartItemProps> = ({
@@ -45,9 +45,12 @@ const CartItem: React.FC<CartItemProps> = ({
                     <div className="mt-1 flex text-sm">
                         <p className="text-gray-500">{data.author.name}</p>
                         <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">{data.publisher.name}</p>
+
                     </div>
                     <Currency value={data.price} />
+
                 </div>
+                <div>Quantity: {data.orderQuantity}</div>
             </div>
         </li>
     );

@@ -25,7 +25,7 @@ const NavbarSearch = () => {
     };
 
     return (
-        <div className="">
+        <div className="w-80">
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div className="relative">
