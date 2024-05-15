@@ -15,6 +15,7 @@ const InfoPreview: React.FC<InfoProps> = ({ data }) => {
     const cart = useCart();
 
     const onAddToCart = () => {
+        data.orderQuantity = "1";
         cart.addItem(data);
     }
 
