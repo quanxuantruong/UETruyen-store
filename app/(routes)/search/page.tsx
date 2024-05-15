@@ -8,6 +8,8 @@ import ProductCard from "@/components/ui/product-card";
 import MobileFilters from "./components/mobile-filters";
 import getCategories from "@/actions/get-categories";
 
+import useCart, { CartOrder } from "@/hooks/use-cart";
+
 export const revalidate = 0;
 
 interface FilterPropsPage {
@@ -69,7 +71,7 @@ const FilterPage = async ({
                                 {products.map((item) => (
                                     <ProductCard
                                         key={item.id}
-                                        data={item}
+                                        data={{ ...item, orderQuantity: "" }}
                                     />
                                 ))}
                             </div>

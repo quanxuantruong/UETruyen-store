@@ -69,7 +69,7 @@ const FilterPage = async ({
                                 {products.map((item) => (
                                     <ProductCard
                                         key={item.id}
-                                        data={item}
+                                        data={{ ...item, orderQuantity: "" }}
                                     />
                                 ))}
                             </div>
